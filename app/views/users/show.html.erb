@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="jumbotron">
+
+    <h2><%= @user.name %></h2> <a href="/secrets/new"> View All Secrets</a>
+    <div>
+      <form  action="/secrets" method="post">
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label for="posts">New Secret</label>
+         <textarea name="posts[content]" rows="8" cols="80"></textarea>
+         <input type="submit" class="btn btn-primary" value="Create Secret">
+      </form>
+    </div>
+
+    <div class="container">
+      <h3>Secrets:</h3>
+        <% @user.secrets.each do |s| %>
+
+      <ul class="list-group">
+        <li class="list-group-item"> <h4><%= s.content %> </h4>
+          <h3><%= s.likes.count %> likes</h3>
+        <a href="/secrets/<%= s.id %>" class="btn btn-primary">Delete</a></li>
+
+      </ul>
+
+  <%end%>
+    </div>
+    <div class="container">
+      <h2>Secret that you liked</h2>
+        <% @user.secrets_liked.each do |a|%>
+        <p><%= a.content %></p>
+        <p><%= a.likes.count %> likes</p>
+
+        <% end %>
+
+    </div>
+
+
+
+
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="jumbotron">
+    <form action="/login" method="post">
+      <div class="form-group">
+        <h2>Log In</h2>
+       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email">
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <input class="btn btn-primary" type="submit" value="Log In">
+    </form>
+      <a href="/users/new" class="btn btn-primary">Register</a>
+  </div>
+
+</div>
